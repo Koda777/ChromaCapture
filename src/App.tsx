@@ -1,14 +1,18 @@
-import React from "react";
-import styled from "styled-components";
+import styled from "styled-components"
+import HeaderColor from "./components/HeaderColor"
 
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  background: black;
-`;
+  background: #29272f;
+`
 
 function App() {
-  return <Container></Container>;
+  return (
+    <Container>
+      <HeaderColor />
+    </Container>
+  )
 }
 
-export default App;
+export default App
