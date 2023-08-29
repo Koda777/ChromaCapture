@@ -1,3 +1,5 @@
-mod hex_colors;
+mod color_commands;
+mod data;
 
-pub use hex_colors::HEX_COLORS;
+pub use color_commands::{set_color, set_lock};
+pub use data::ColorData;
