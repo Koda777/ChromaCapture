@@ -1,5 +1,4 @@
 use once_cell::sync::Lazy;
-use std::sync::Mutex;
 
 pub struct ColorData {
     pub hex_colors: [u32; 6],
@@ -28,4 +27,4 @@ impl ColorData {
     }
 }
 
-pub static COLOR_DATA: Lazy<Mutex<ColorData>> = Lazy::new(|| Mutex::new(ColorData::new()));
+pub static COLOR_DATA: Lazy<ColorData> = Lazy::new(|| ColorData::new());
