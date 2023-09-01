@@ -8,9 +8,9 @@ const Container = styled.div`
 `
 const Rectangle = styled.div`
   background: white;
-  height: 100px;
+  height: 110px;
+  width: 100%;
   margin-top: 10px;
-  width: 300px;
 `
 
 const HeaderColor = () => {
