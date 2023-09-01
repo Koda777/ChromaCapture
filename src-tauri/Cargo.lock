@@ -68,6 +68,7 @@ version = "0.1.0"
 dependencies = [
  "once_cell",
  "rand 0.8.5",
+ "random_color",
  "serde",
  "serde_json",
  "tauri",
@@ -2033,6 +2034,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "16abd0c1b639e9eb4d7c50c0b8100b0d0f849be2349829c740fe8e6eb4816429"
 dependencies = [
  "rand_core 0.5.1",
+]
+
+[[package]]
+name = "random_color"
+version = "0.6.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f5f34bd6526786b2ce5141fd37a4084b5da1ebae74595b5b0d05482a7cef7181"
+dependencies = [
+ "rand 0.7.3",
 ]
 
 [[package]]

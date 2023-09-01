@@ -31,6 +31,7 @@ const MainColors = () => {
     }
     fetchData()
   })
+  console.log(response)
 
   return (
     <Container>
