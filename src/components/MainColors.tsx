@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 import { invoke } from "@tauri-apps/api/tauri"
 
@@ -14,29 +14,28 @@ const Container = styled.div`
 const Square = styled.div`
   position: relative;
   top: 40px;
-  background: red;
   height: 40px;
   width: 40px;
   margin: 10px;
+  border-radius: 5px;
+  background: ${(props) => props.color};
 `
 
 const MainColors = () => {
-  const [response, setResponse] = useState(null)
+  const [response, setResponse] = useState("#fff")
 
   useEffect(() => {
     async function fetchData() {
       const data: any = await invoke("get_colors")
-      console.log(data)
-      setResponse(data)
+      setResponse(JSON.parse(data))
     }
     fetchData()
-  })
-  console.log(response)
+  }, [])
 
   return (
     <Container>
       {[...Array(5)].map((index, i) => {
-        return <Square key={`${index} - ${i}`} />
+        return <Square key={`${index} - ${i}`} color={response[i]} />
       })}
     </Container>
   )
