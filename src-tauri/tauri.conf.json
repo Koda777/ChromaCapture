@@ -56,10 +56,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 330,
+        "height": 390,
+        "width": 70,
         "resizable": false,
-        "title": "Chroma Capture",
-        "width": 320
+        "title": "Chroma Capture"
       }
     ]
   }
