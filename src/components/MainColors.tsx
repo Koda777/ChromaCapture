@@ -16,6 +16,9 @@ const Square = styled.div`
   width: 60px;
   border-radius: 5px;
   background: ${(props) => props.color};
+  &:hover {
+    border: 2px solid white;
+  }
 `
 
 const MainColors = () => {
