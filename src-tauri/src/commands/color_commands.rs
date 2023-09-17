@@ -19,6 +19,5 @@ pub async fn get_colors() -> Result<String, String> {
         }
         Err(_) => return Err(String::from("Error: Could not convert color variable to JSON")),
     };
-    
     Ok(json)
 }
