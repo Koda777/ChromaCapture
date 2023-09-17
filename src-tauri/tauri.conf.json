@@ -59,7 +59,8 @@
         "height": 390,
         "width": 70,
         "resizable": false,
-        "title": "Chroma Capture"
+        "title": "Chroma",
+        "alwaysOnTop": true
       }
     ]
   }
