@@ -25,13 +25,14 @@ const MainColors = () => {
     async function fetchData() {
       try {
         const data: any = await invoke("get_colors")
+        console.log("colors is ", data)
         setResponse(JSON.parse(data))
       } catch (e) {
         console.log(e)
       }
     }
     fetchData()
-  }, [])
+  })
 
   return (
     <Container>

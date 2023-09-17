@@ -26,11 +26,11 @@ impl ColorData {
         color_data
     }
 
-    fn set_random_color(&mut self, index: usize) {
+    pub fn set_random_color(&mut self, index: usize) {
         if self.lock_colors[index] == false {
             self.hex_colors[index] = RandomColor::new().luminosity(Luminosity::Light).to_hex();
         }
     }
 }
 
-pub static COLOR_DATA: Lazy<ColorData> = Lazy::new(|| ColorData::new());
+pub static mut COLOR_DATA: Lazy<ColorData> = Lazy::new(|| ColorData::new());

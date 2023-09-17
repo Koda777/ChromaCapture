@@ -12,12 +12,11 @@ pub fn set_lock() -> () {}
 
 #[command]
 pub async fn get_colors() -> Result<String, String> {
-    let json = match to_string(&COLOR_DATA.hex_colors) {
-        Ok(json) => {
-            println!("{:?}", json);
-            json
+    let json = unsafe {
+        match to_string(&COLOR_DATA.hex_colors) {
+            Ok(s) => s,
+            Err(_) => String::from("Error converting to JSON"),
         }
-        Err(_) => return Err(String::from("Error: Could not convert color variable to JSON")),
     };
     Ok(json)
 }

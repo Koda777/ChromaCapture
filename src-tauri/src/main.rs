@@ -2,7 +2,6 @@
 use commands::data::COLOR_DATA;
 use commands::{get_colors, set_color, set_lock};
 use device_query::{DeviceQuery, DeviceState, Keycode};
-use keyboard_types::{Code, KeyboardEvent};
 use std::thread;
 use tauri::App;
 mod commands;
@@ -17,15 +16,19 @@ fn main() {
 
 fn setup(app: &App) -> Result<(), Box<dyn std::error::Error + 'static>> {
     let app_handle = app.handle();
-    let mut key = Code::Space;
+    let mut space_pressed = false;
     let device_state = DeviceState::new();
 
     thread::spawn(move || loop {
         let keys: Vec<Keycode> = device_state.get_keys();
-        if keys.contains(&Keycode::Space) {
+        let space_key_pressed = keys.contains(&Keycode::Space);
+        if space_key_pressed && !space_pressed {
             for i in 0..6 {
-                println!("Couleur {} : {}", i, COLOR_DATA.hex_colors[i]);
+                unsafe { COLOR_DATA.set_random_color(i) }
             }
+            space_pressed = true;
+        } else if !space_key_pressed {
+            space_pressed = false;
         }
     });
     Ok(())
