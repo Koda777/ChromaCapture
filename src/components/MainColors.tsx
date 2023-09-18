@@ -18,14 +18,19 @@ const MainColors = () => {
     fetchData()
   })
 
-  const handleDoubleClick = (index: number) => {
+  const handleClick = (index: number) => {
     navigator.clipboard.writeText(response[index])
   }
 
-  const handleLock = (index: number) => {
+  const handleLock = async (index: number) => {
     const newLocked = [...locked]
     newLocked[index] = !newLocked[index]
     setLocked(newLocked)
+    try {
+      await invoke("set_lock", { index: index })
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (

@@ -24,7 +24,9 @@ fn setup(app: &App) -> Result<(), Box<dyn std::error::Error + 'static>> {
         let space_key_pressed = keys.contains(&Keycode::Space);
         if space_key_pressed && !space_pressed {
             for i in 0..6 {
-                unsafe { COLOR_DATA.set_random_color(i) }
+                if unsafe { !COLOR_DATA.lock_colors[i] } {
+                    unsafe { COLOR_DATA.set_random_color(i) }
+                }
             }
             space_pressed = true;
         } else if !space_key_pressed {
