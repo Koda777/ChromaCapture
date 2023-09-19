@@ -37,13 +37,14 @@ const MainColors = () => {
     <Container>
       {[...Array(5)].map((index, i) => {
         return (
-          <Square
-            key={`${index} - ${i}`}
-            color={response[i]}
-            onClick={() => handleClick(i)}
-            onDoubleClick={() => handleLock(i)}
-            borderColor={locked[i] ? "white" : "transparent"}
-          />
+          <BoxSquare>
+            <Square
+              key={`${index} - ${i}`}
+              color={response[i]}
+              onDoubleClick={() => handleClick(i)}
+            />
+            <LockContainer onClick={() => handleLock(i)} locked={locked[i]} />
+          </BoxSquare>
         )
       })}
     </Container>
@@ -54,26 +55,38 @@ export default MainColors
 
 interface SquareProps {
   color: string
-  borderColor: string
+}
+
+interface LockProps {
+  locked: boolean
 }
 
 const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
 `
 
 const Square: React.FC<SquareProps> = styled.div`
-  height: 60px;
+  height: 100px;
   width: 60px;
-  border-radius: 5px;
   background: ${(props) => props.color};
-  border: 2px solid ${(props) => props.borderColor};
+  border: 2px solid;
 
   &:hover {
     border: 2px solid white;
   }
+`
+
+const BoxSquare = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
+
+const LockContainer: React.FC<LockProps> = styled.div`
+  flex: 1;
+  background: ${(props) => (props.locked ? "white" : "black")};
 `

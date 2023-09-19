@@ -56,10 +56,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 390,
-        "width": 70,
+        "height": 150,
+        "width": 300,
         "resizable": false,
-        "title": "Chroma",
+        "title": "",
         "alwaysOnTop": true
       }
     ]

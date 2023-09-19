@@ -13,7 +13,6 @@ pub fn set_lock(index: usize) -> () {
     unsafe { COLOR_DATA.lock_colors[index] = !COLOR_DATA.lock_colors[index] };
 }
 
-
 #[command]
 pub async fn get_colors() -> Result<String, String> {
     let json = unsafe {
